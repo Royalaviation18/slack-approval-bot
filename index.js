@@ -11,10 +11,18 @@ app.use(bodyParser.json());
 
 // Slash command to open the modal
 app.post("/approval-test", async (req, res) => {
+    console.log("Incoming request body:", req.body);
+    
+    res.sendStatus(200); // Prevent Slack from retrying
+    
     const { trigger_id } = req.body;
+    if (!trigger_id) {
+        console.error("Missing trigger_id");
+        return;
+    }
 
     const modal = {
-        trigger_id,
+        trigger_id, // Placed in the correct location
         view: {
             type: "modal",
             callback_id: "approval_modal",
@@ -23,10 +31,7 @@ app.post("/approval-test", async (req, res) => {
                 {
                     type: "input",
                     block_id: "approver_select",
-                    element: {
-                        type: "users_select",
-                        action_id: "approver",
-                    },
+                    element: { type: "users_select", action_id: "approver" },
                     label: { type: "plain_text", text: "Select Approver" }
                 },
                 {
@@ -51,24 +56,17 @@ app.post("/approval-test", async (req, res) => {
                 "Content-Type": "application/json"
             }
         });
-
-        if (!response.data.ok) {
-            console.error("Error opening modal:", response.data);
-            return res.status(500).send("Failed to open modal.");
-        }
-
-        res.sendStatus(200);
+        console.log("Slack API response:", response.data);
     } catch (error) {
         console.error("Error:", error.response?.data || error.message);
-        res.sendStatus(500);
     }
 });
-
 
 // Handle modal submission
 app.post("/slack/interactions", async (req, res) => {
     const payload = JSON.parse(req.body.payload);
-
+    console.log("Modal submission payload:", payload);
+    
     if (payload.type === "view_submission") {
         const approver = payload.view.state.values.approver_select.approver.selected_user;
         const approvalText = payload.view.state.values.approval_text.approval_text_input.value;
@@ -77,7 +75,7 @@ app.post("/slack/interactions", async (req, res) => {
         const message = {
             channel: approver,
             text: `<@${requester}> has requested approval:\n${approvalText}`,
-            attachments: [
+            attachments: JSON.stringify([
                 {
                     text: "Approve or Reject?",
                     fallback: "You cannot act on this message",
@@ -87,35 +85,36 @@ app.post("/slack/interactions", async (req, res) => {
                         { type: "button", text: "Reject", style: "danger", action_id: "reject", value: requester }
                     ]
                 }
-            ]
+            ])
         };
-
+        
         try {
-            await axios.post("https://slack.com/api/chat.postMessage", message, {
+            const response = await axios.post("https://slack.com/api/chat.postMessage", message, {
                 headers: {
                     Authorization: `Bearer ${process.env.SLACK_BOT_TOKEN}`,
                     "Content-Type": "application/json"
                 }
             });
-
-            res.sendStatus(200);
+            console.log("Approval request sent:", response.data);
         } catch (error) {
-            console.error("Error sending approval request:", error.response?.data || error.message);
-            res.sendStatus(500);
+            console.error("Error sending approval message:", error.response?.data || error.message);
         }
     }
+    res.sendStatus(200);
 });
 
-// Handle Approve/Reject
+// Handle Approve/Reject actions
 app.post("/slack/actions", async (req, res) => {
     const payload = JSON.parse(req.body.payload);
+    console.log("Button action payload:", payload);
+    
     const action = payload.actions[0];
     const requester = action.value;
     const approver = payload.user.id;
     const decision = action.action_id === "approve" ? "approved" : "rejected";
 
     try {
-        await axios.post("https://slack.com/api/chat.postMessage", {
+        const response = await axios.post("https://slack.com/api/chat.postMessage", {
             channel: requester,
             text: `Your approval request was ${decision} by <@${approver}>.`
         }, {
@@ -124,12 +123,12 @@ app.post("/slack/actions", async (req, res) => {
                 "Content-Type": "application/json"
             }
         });
-
-        res.sendStatus(200);
+        console.log("Approval decision sent:", response.data);
     } catch (error) {
-        console.error("Error sending approval response:", error.response?.data || error.message);
-        res.sendStatus(500);
+        console.error("Error sending decision message:", error.response?.data || error.message);
     }
+    
+    res.sendStatus(200);
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
