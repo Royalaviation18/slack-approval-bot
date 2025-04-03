@@ -146,6 +146,5 @@ If you have any feedback, please reach out to us at rohitp2203@gmail.com
 
 
 ## Demo
+🎬 [Click here to watch the demo](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/demoSlackApprovalBot.mp4)
 
-
-https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/demoSlackApprovalBot.mp4
