@@ -12,8 +12,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Slack credentials
 const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
-const SLACK_SIGNING_SECRET = process.env.SLACK_SIGNING_SECRET;
-const SLACK_CHANNEL_ID = process.env.SLACK_CHANNEL_ID;
 
 // 🔹 Slack Event Subscription (Fix for 404)
 app.post("/slack/events", async (req, res) => {

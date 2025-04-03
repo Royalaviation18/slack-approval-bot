@@ -1,0 +1,152 @@
+
+# Slack Approval Bot
+
+ 📌 Overview
+
+This is a Slack Approval Bot developed using Node.js, Express, and the Slack API. The bot enables a user (Requester) to request approval from another user (Approver) through a Slack modal. The Approver can either approve or reject the request, and the Requester will be notified of the decision.
+
+
+
+
+## 🚀 Features
+
+- Slash Command (/approval-test): Opens a modal for approval request.
+
+- User Dropdown: Select an approver from Slack members.
+
+- Approval Text Input: Enter details for the approval request.
+
+- Approval Notification: Sends a message to the selected approver  with Approve/Reject buttons.
+
+- Requester Notification: Requester gets notified when the approver makes a decision.
+
+- Slack Event Subscription: Handles Slack verification and interactions.
+
+
+## 📌 Technologies Used
+
+**Backend Framewok 🌐 ** Node.js & Express 
+
+**Communication & Interaction 📤 :** Slack API
+
+**Development Tunnel 🔗  :** ngrok
+
+
+## 📋 Architecture Diagram
+
+![architectureDiagram](https://github.com/Royalaviation18/Rent.IO_web/blob/main/appScreenShots/architectureDiagram.jpg)
+
+## 🛠️ Setup & Installation
+
+1️⃣ Clone the Repository
+
+```bash
+    git clone https://github.com/your-repo/slack-approval-bot.git
+    cd slack-approval-bot
+```
+
+2️⃣ Install Dependencies
+
+```bash
+    npm install
+```
+
+3️⃣ Create a .env File
+
+```bash
+    SLACK_BOT_TOKEN=your-slack-bot-token
+    PORT = PORT_NUMBER
+```
+
+4️⃣ Setup ngrok for Local Development
+
+Since Slack requires a public URL, use ngrok to expose your local server:
+
+```bash
+    npm install -g ngrok
+    ngrok http 3000
+```
+Copy the https://your-ngrok-url.ngrok.io and use it in Slack settings.
+
+5️⃣ Start the Server
+```bash
+    node app.js
+```
+
+## 📝 Usage
+
+1️⃣ Register a Slash Command in Slack
+- Navigate to Slack API Dashboard → Your App → Slash Commands.
+
+- Click Create New Command:
+
+    - Command: /approval-test
+
+    - Request URL: https://your-ngrok-url.ngrok.io/approval-test
+
+    - Short Description: Request approval from a teammate.
+
+    - Usage Hint: [Enter details]
+
+2️⃣ Set Up Event Subscriptions
+    
+- Navigate to Slack API Dashboard → Event Subscriptions.
+
+- Enable events and add the following Request URL:
+    
+```bash
+    https://your-ngrok-url.ngrok.io/slack/events
+```
+- Subscribe to message.channels, app_mention, reaction_added events
+
+
+3️⃣ Interact with the Bot
+
+- Type /approval-test in Slack.
+
+- A modal appears → Select an approver → Enter details → Click Submit.
+- The approver receives a message with Approve/Reject buttons.
+- The requester gets notified once the approver makes a decision.
+
+## 📜 API Endpoints
+
+
+
+
+| Endpoints | Method    | Description                |
+| :-------- | :------- | :------------------------- |
+| `/slack/events` | `POST` | **Handles Slack event subscriptions** |
+| `/approval-test` |`POST` | **Triggers the approval modal** |
+| `/slack/interactions` | `POST` | **Handles user interactions modal**|
+| `/slack/approval-request`| `POST` | **Sends approval request to approver** |
+| `/slack/actions` | `POST` | **Handles Approve/Reject actions** |
+
+
+
+
+## Authors
+
+- [Rohit Priyadarshi](https://github.com/Royalaviation18)
+
+
+## 📜 License
+[MIT](https://github.com/Royalaviation18/slack-approval-bot/blob/main/LICENSE)
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at rohitp2203@gmail.com
+
+
+## Documentation
+
+ 🔗 [Slack API](https://api.slack.com/)
+
+ 🔗 [ngrok](https://ngrok.com/)
+
+
+## Demo
+
+Insert gif or link to demo
+
+https://www.loom.com/share/826c29d0ca25489083981397c4657f53?sid=3fa3298a-3b9d-4581-b5f4-cc48614dd5de
