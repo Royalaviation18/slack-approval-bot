@@ -34,7 +34,7 @@ This is a Slack Approval Bot developed using Node.js, Express, and the Slack 
 
 ## 📋 Architecture Diagram
 
-![architectureDiagram](https://github.com/Royalaviation18/Rent.IO_web/blob/main/appScreenShots/architectureDiagram.jpg)
+![architectureDiagram](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/architectureDiagram-Slack-Approval-Bot.png)
 
 ## 🛠️ Setup & Installation
 
@@ -147,6 +147,5 @@ If you have any feedback, please reach out to us at rohitp2203@gmail.com
 
 ## Demo
 
-Insert gif or link to demo
 
-https://www.loom.com/share/826c29d0ca25489083981397c4657f53?sid=3fa3298a-3b9d-4581-b5f4-cc48614dd5de
+https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/demoSlackApprovalBot.mp4
