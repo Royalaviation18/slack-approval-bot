@@ -108,9 +108,7 @@ Copy the https://your-ngrok-url.ngrok.io and use it in Slack settings.
 - The approver receives a message with Approve/Reject buttons.
 - The requester gets notified once the approver makes a decision.
 
-## 📜 API Endpoints
-
-
+## 🔌 API Endpoints
 
 
 | Endpoints | Method    | Description                |
@@ -124,29 +122,41 @@ Copy the https://your-ngrok-url.ngrok.io and use it in Slack settings.
 
 
 
-## Authors
+## 📷 Screenshots
 
-- [Rohit Priyadarshi](https://github.com/Royalaviation18)
+![Approve Model](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/approvalPop.png)
 
-
-## 📜 License
-[MIT](https://github.com/Royalaviation18/slack-approval-bot/blob/main/LICENSE)
+![Approval](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/approval.png)
 
 
-## Feedback
-
-If you have any feedback, please reach out to us at rohitp2203@gmail.com
+![Approve](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/approve.png)
 
 
-## Documentation
+![Notification](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/notification.png)
+
+
+
+## Demo 🎥
+[![Watch the Demo](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/demo.png)](https://www.loom.com/share/d99d8c8b58c349098e818ed3888e995b?sid=2a83a575-7c0a-43bb-8729-c7a5db6587bc)
+
+
+## 📖 Documentation
 
  🔗 [Slack API](https://api.slack.com/)
 
  🔗 [ngrok](https://ngrok.com/)
 
+ 
+## 📜 License
+[MIT](https://github.com/Royalaviation18/slack-approval-bot/blob/main/LICENSE)
 
-## Demo 🎥
-[![Watch the Demo](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.loom.com/share/d99d8c8b58c349098e818ed3888e995b?sid=2a83a575-7c0a-43bb-8729-c7a5db6587bc)
+## 👨‍💻 Authors
+
+- [Rohit Priyadarshi](https://github.com/Royalaviation18)
+
+## 🗣️ Feedback
+
+If you have any feedback, please reach out to us at rohitp2203@gmail.com
 
 
 
