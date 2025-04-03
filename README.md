@@ -137,6 +137,7 @@ Copy the https://your-ngrok-url.ngrok.io and use it in Slack settings.
 
 
 ## Demo 🎥
+- Click on the image
 [![Watch the Demo](https://github.com/Royalaviation18/slack-approval-bot/blob/main/assets/demo.png)](https://www.loom.com/share/d99d8c8b58c349098e818ed3888e995b?sid=2a83a575-7c0a-43bb-8729-c7a5db6587bc)
 
 
