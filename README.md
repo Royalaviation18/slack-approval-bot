@@ -25,7 +25,7 @@ This is a Slack Approval Bot developed using Node.js, Express, and the Slack 
 
 ## 📌 Technologies Used
 
-**Backend Framewok 🌐 ** Node.js & Express 
+**Backend Framewok 🌐 :** Node.js & Express 
 
 **Communication & Interaction 📤 :** Slack API
 
